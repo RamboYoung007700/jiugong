@@ -1,0 +1,97 @@
+<html>
+	<body>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		</head>
+<style>
+.t2{
+   
+   margin-top:10px;
+}
+
+</style>
+
+		
+<table border="0" width="153px">
+	<tr height=50">
+		<td id="1" bgcolor="orange" ></td>
+		<td id="2" bgcolor="orange" ></td>
+		<td id="3" bgcolor="orange" ></td>
+	</tr>
+
+	<tr height=50">
+		<td id="4" bgcolor="orange" ></td>
+		<td id="5" bgcolor="orange" ></td>
+		<td id="6" bgcolor="orange" ></td>
+	</tr>
+
+	<tr height=50">
+		<td id="7" bgcolor="orange" ></td>
+		<td id="8" bgcolor="orange" ></td>
+		<td id="9" bgcolor="orange" ></td>
+	</tr>
+
+</table>
+
+<table class="t2" style="border: solid thin orange" width="153px">
+	<tr>
+		<td id="t10"bgcolor="white" align="center" onclick="start()" onmouseover="over(this)" onmouseout="out(this)"><a href="#nowhere" style="text-decoration:none"><font color="orange">开始闪</font></a></td>
+	</tr>
+</table>
+<table class="t2" style="border: solid thin orange" width="153px">	
+	<tr>
+		<td id="t11" bgcolor="white" align="center" onclick="end()" onmouseover="over(this)" onmouseout="out(this)"><a href="#nowhere" style="text-decoration:none"><font color="orange">停止闪</font></a></td>
+	</tr>
+</table>
+
+<script>
+	var chongfu=""; 
+	function over(e){
+		e.bgColor="orange";
+		e.childNodes[0].childNodes[0].attributes[0].value="white";
+		e.parentNode.parentNode.parentNode.attributes[2].nodeValue="border: none";
+	}
+	function out(e){
+		e.bgColor="white";
+		e.childNodes[0].childNodes[0].attributes[0].value="orange";
+		e.parentNode.parentNode.parentNode.attributes[2].nodeValue="border: solid thin orange";
+	}
+	function cc(){	
+		for(i=1;i<10;i++){
+			var t1=document.getElementById(i);
+			t1.bgColor="orange";
+		}
+		
+		var temp=new Array(3);
+		temp[0]=1;
+		temp[1]=1;
+		while(temp[0]==temp[1]||temp[1]==temp[2]||temp[2]==temp[0]){
+			temp[0]=Math.round(Math.random() *8)+1;
+			temp[1]=Math.round(Math.random() *8)+1;
+			temp[2]=Math.round(Math.random() *8)+1;
+		}
+		
+		for(i=0;i<3;i++){
+			var t1=document.getElementById(temp[i]);
+			r=Math.round(Math.random() *254);
+			g=Math.round(Math.random() *254);
+			b=Math.round(Math.random() *254);
+			var color="rgb("+r+","+g+","+b+")";
+			t1.bgColor=color;	
+		}
+	}
+	function start(){
+		clearInterval(chongfu);
+		chongfu=setInterval("cc()",1000);
+	}
+	function end(){
+		clearInterval(chongfu);
+		for(i=1;i<10;i++){
+			var t1=document.getElementById(i);
+			t1.bgColor="orange";
+		}
+	}
+</script>
+
+	</body>
+</html>
